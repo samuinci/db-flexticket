@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DB-Gutscheine – Samuel</title>
+  <style>
+    :root{
+      --bg:#e9f0de; --text:#0f172a; --green:#0b3d2e; --card:#ffffff;
+      --gold1:#e9d38c; --gold2:#c79b39; --muted:#475569;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+         background:var(--bg);color:var(--text);line-height:1.45}
+    .wrap{max-width:1100px;margin:auto;padding:24px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .db{width:54px;height:54px;border:3px solid #ef4444;border-radius:10px;
+        display:grid;place-items:center;background:#fff}
+    .db span{color:#ef4444;font-weight:800;font-size:22px}
+    .seal{position:relative;width:110px;height:110px;border-radius:50%;
+      background:radial-gradient(120px 120px at 30% 30%, var(--gold1), var(--gold2));
+      box-shadow:inset 0 0 0 4px #b58125,0 6px 14px rgba(0,0,0,.12)}
+    .seal-inner{position:absolute;inset:0;display:grid;place-items:center;padding:12px;text-align:center}
+    .seal-inner div{font-weight:700;font-size:10px}
+    .stars{font-size:14px;margin:4px 0}
+    h1{font-size:40px;margin:6px 0 10px}
+    p.lead{color:var(--muted);max-width:700px;margin:0 0 18px}
+    .grid{display:grid;gap:20px;grid-template-columns:1fr; }
+    @media(min-width:900px){ .grid{grid-template-columns:1fr 1fr} }
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:18px;padding:20px;
+      box-shadow:0 6px 18px rgba(0,0,0,.06)}
+    .title{font-weight:800;font-size:22px;margin:4px 0 10px}
+    .price{display:inline-block;background:var(--green);color:#fff;font-weight:900;
+      padding:12px 18px;border-radius:12px;font-size:26px;margin:6px 0 12px}
+    ul{list-style:none;padding:0;margin:8px 0}
+    li{display:flex;gap:8px;margin:8px 0;color:#1f2937}
+    .btn{display:block;text-align:center;border-radius:12px;padding:12px 16px;
+      text-decoration:none;font-weight:700}
+    .btn-primary{background:#111827;color:#fff}
+    .btn-paypal{background:#ffc439;color:#111827;margin-top:8px}
+    footer{border-top:1px solid #e2e8f0;margin-top:28px;padding-top:16px;
+      display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;color:#64748b;font-size:12px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="db"><span>DB</span></div>
+        <div>
+          <div style="font-weight:800;">DB-Gutscheine</div>
+          <div style="color:#64748b;font-size:12px;">Premium-Tickets mit Käuferschutz</div>
+        </div>
+      </div>
+      <div class="seal" aria-label="Top Bewertungen seit 2019">
+        <div class="seal-inner">
+          <div>TOP BEWERTUNGEN</div>
+          <div class="stars">★★★★★</div>
+          <div>SEIT 2019</div>
+        </div>
+      </div>
+    </header>
+
+    <h1>Schnell. Sicher. Sofort per Nachricht.</h1>
+    <p class="lead">Kaufe geprüfte DB-Gutscheincodes direkt hier. Zahlung über Stripe (Karte, Apple Pay, Google Pay) oder PayPal möglich. Seit 2019 mit Top-Bewertungen.</p>
+
+    <div class="grid">
+      <!-- 100 € -->
+      <div class="card">
+        <div class="title">Hin & Rückfahrt – 2. Klasse</div>
+        <div class="price">100 €</div>
+        <ul>
+          <li>✅ Seit 2019 zuverlässig aktiv bei Kleinanzeigen</li>
+          <li>✅ Sofortversand per Nachricht nach Zahlung</li>
+          <li>✅ Sicher bezahlen mit PayPal & Käuferschutz</li>
+        </ul>
+        <a class="btn btn-primary" href="https://buy.stripe.com/dRm28sf6H2va7Tt2KjdMI02">Jetzt kaufen (Stripe)</a>
+        <a class="btn btn-paypal" href="#" onclick="alert('PayPal wird später ergänzt. Bitte Stripe nutzen 😊');return false;">PayPal</a>
+      </div>
+
+      <!-- 70 € -->
+      <div class="card">
+        <div class="title">Einfache Fahrt – 2. Klasse</div>
+        <div class="price">70 €</div>
+        <ul>
+          <li>✅ Seit 2019 zuverlässig aktiv bei Kleinanzeigen</li>
+          <li>✅ Sofortversand per Nachricht nach Zahlung</li>
+          <li>✅ Sicher bezahlen mit PayPal & Käuferschutz</li>
+        </ul>
+        <a class="btn btn-primary" href="https://buy.stripe.com/aFa14ogaL8Ty8Xxet1dMI03">Jetzt kaufen (Stripe)</a>
+        <a class="btn btn-paypal" href="#" onclick="alert('PayPal wird später ergänzt. Bitte Stripe nutzen 😊');return false;">PayPal</a>
+      </div>
+    </div>
+
+    <footer>
+      <div>© Samuel • DB-Gutscheine</div>
+      <div>Top-Bewertungen ★★★★★ – seit 2019</div>
+    </footer>
+  </div>
+</body>
+</html>
