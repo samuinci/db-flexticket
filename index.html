@@ -1,102 +1,42 @@
-<!doctype html>
-<html lang="de">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DB-Gutscheine – Samuel</title>
-  <style>
-    :root{
-      --bg:#e9f0de; --text:#0f172a; --green:#0b3d2e; --card:#ffffff;
-      --gold1:#e9d38c; --gold2:#c79b39; --muted:#475569;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-         background:var(--bg);color:var(--text);line-height:1.45}
-    .wrap{max-width:1100px;margin:auto;padding:24px}
-    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
-    .brand{display:flex;gap:12px;align-items:center}
-    .db{width:54px;height:54px;border:3px solid #ef4444;border-radius:10px;
-        display:grid;place-items:center;background:#fff}
-    .db span{color:#ef4444;font-weight:800;font-size:22px}
-    .seal{position:relative;width:110px;height:110px;border-radius:50%;
-      background:radial-gradient(120px 120px at 30% 30%, var(--gold1), var(--gold2));
-      box-shadow:inset 0 0 0 4px #b58125,0 6px 14px rgba(0,0,0,.12)}
-    .seal-inner{position:absolute;inset:0;display:grid;place-items:center;padding:12px;text-align:center}
-    .seal-inner div{font-weight:700;font-size:10px}
-    .stars{font-size:14px;margin:4px 0}
-    h1{font-size:40px;margin:6px 0 10px}
-    p.lead{color:var(--muted);max-width:700px;margin:0 0 18px}
-    .grid{display:grid;gap:20px;grid-template-columns:1fr; }
-    @media(min-width:900px){ .grid{grid-template-columns:1fr 1fr} }
-    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:18px;padding:20px;
-      box-shadow:0 6px 18px rgba(0,0,0,.06)}
-    .title{font-weight:800;font-size:22px;margin:4px 0 10px}
-    .price{display:inline-block;background:var(--green);color:#fff;font-weight:900;
-      padding:12px 18px;border-radius:12px;font-size:26px;margin:6px 0 12px}
-    ul{list-style:none;padding:0;margin:8px 0}
-    li{display:flex;gap:8px;margin:8px 0;color:#1f2937}
-    .btn{display:block;text-align:center;border-radius:12px;padding:12px 16px;
-      text-decoration:none;font-weight:700}
-    .btn-primary{background:#111827;color:#fff}
-    .btn-paypal{background:#ffc439;color:#111827;margin-top:8px}
-    footer{border-top:1px solid #e2e8f0;margin-top:28px;padding-top:16px;
-      display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;color:#64748b;font-size:12px}
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="db"><span>DB</span></div>
-        <div>
-          <div style="font-weight:800;">DB-Gutscheine</div>
-          <div style="color:#64748b;font-size:12px;">Premium-Tickets mit Käuferschutz</div>
-        </div>
-      </div>
-      <div class="seal" aria-label="Top Bewertungen seit 2019">
-        <div class="seal-inner">
-          <div>TOP BEWERTUNGEN</div>
-          <div class="stars">★★★★★</div>
-          <div>SEIT 2019</div>
-        </div>
-      </div>
-    </header>
+<!-- Premium WhatsApp Box (ersetzt den bisherigen altbox-Block) -->
+<style>
+  .btn-wa{background:#25D366;color:#0f172a;position:relative;isolation:isolate}
+  .btn-wa.pulse::after{
+    content:"";position:absolute;inset:0;border-radius:12px;
+    box-shadow:0 0 0 0 rgba(37,211,102,.6);animation:pulse 1.8s ease-out infinite;z-index:-1
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}
+    70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}
+    100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}
+  }
+</style>
 
-    <h1>Schnell. Sicher. Sofort per Nachricht.</h1>
-    <p class="lead">Kaufe geprüfte DB-Gutscheincodes direkt hier. Zahlung über Stripe (Karte, Apple Pay, Google Pay) oder PayPal möglich. Seit 2019 mit Top-Bewertungen.</p>
+<div class="altbox"
+     style="margin-top:22px;background:#ffffff;border-radius:20px;
+            border:1px solid #cde3d6;box-shadow:0 12px 28px rgba(11,61,46,.08),
+            inset 0 0 0 2px #e8f3ed;grid-template-columns:160px 1fr 240px">
+  <!-- QR links -->
+  <img class="qr" alt="WhatsApp QR"
+       src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fwa.me%2F4915155693408%3Ftext%3DHallo%2520Samuel%252C%2520ich%2520m%25C3%25B6chte%2520einen%2520DB-Gutschein%2520kaufen.%2520Variante%253A%2520Hin%2520%2526%2520R%25C3%25BCckfahrt%2520(105%25E2%2582%25AC)%2520oder%2520Einfache%2520Fahrt%2520(74%25E2%2582%25AC)." />
 
-    <div class="grid">
-      <!-- 100 € -->
-      <div class="card">
-        <div class="title">Hin & Rückfahrt – 2. Klasse</div>
-        <div class="price">100 €</div>
-        <ul>
-          <li>✅ Seit 2019 zuverlässig aktiv bei Kleinanzeigen</li>
-          <li>✅ Sofortversand per Nachricht nach Zahlung</li>
-          <li>✅ Sicher bezahlen mit PayPal & Käuferschutz</li>
-        </ul>
-        <a class="btn btn-primary" href="https://buy.stripe.com/dRm28sf6H2va7Tt2KjdMI02">Jetzt kaufen (Stripe)</a>
-        <a class="btn btn-paypal" href="#" onclick="alert('PayPal wird später ergänzt. Bitte Stripe nutzen 😊');return false;">PayPal</a>
-      </div>
-
-      <!-- 70 € -->
-      <div class="card">
-        <div class="title">Einfache Fahrt – 2. Klasse</div>
-        <div class="price">70 €</div>
-        <ul>
-          <li>✅ Seit 2019 zuverlässig aktiv bei Kleinanzeigen</li>
-          <li>✅ Sofortversand per Nachricht nach Zahlung</li>
-          <li>✅ Sicher bezahlen mit PayPal & Käuferschutz</li>
-        </ul>
-        <a class="btn btn-primary" href="https://buy.stripe.com/aFa14ogaL8Ty8Xxet1dMI03">Jetzt kaufen (Stripe)</a>
-        <a class="btn btn-paypal" href="#" onclick="alert('PayPal wird später ergänzt. Bitte Stripe nutzen 😊');return false;">PayPal</a>
-      </div>
-    </div>
-
-    <footer>
-      <div>© Samuel • DB-Gutscheine</div>
-      <div>Top-Bewertungen ★★★★★ – seit 2019</div>
-    </footer>
+  <!-- Text in der Mitte -->
+  <div>
+    <h3 style="margin:0 0 10px;font-size:20px;color:#0b3d2e">Direkt & persönlich über WhatsApp</h3>
+    <p style="margin:0;color:#334155;line-height:1.7">
+      Schnell, sicher und unkompliziert: Zahlung per <strong>PayPal (Freunde & Familie)</strong> oder
+      <strong>Echtzeitüberweisung</strong>. Deinen Gutscheincode erhältst du
+      <strong>sofort nach Zahlungseingang</strong>.
+    </p>
+    <ul style="margin:12px 0 0;padding:0;list-style:none;color:#1f2937;font-size:14px;line-height:1.6">
+      <li>• Hin & Rückfahrt: <strong>100 €</strong></li>
+      <li>• Einfache Fahrt: <strong>70 €</strong></li>
+    </ul>
   </div>
-</body>
-</html>
+
+  <!-- Button rechts -->
+  <a class="btn btn-wa pulse"
+     style="font-weight:900;border:1px solid #128C7E;padding:16px 18px;display:grid;place-items:center;height:56px"
+     href="https://wa.me/4915155693408?text=Hallo%20Samuel,%20ich%20m%C3%B6chte%20einen%20DB-Gutschein%20kaufen.%20Variante:%20Hin%20%26%20R%C3%BCckfahrt%20(105%E2%82%AC)%20oder%20Einfache%20Fahrt%20(74%E2%82%AC)."
+     target="_blank" rel="noopener">Jetzt über WhatsApp anfragen</a>
+</div>
