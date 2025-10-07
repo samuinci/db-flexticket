@@ -1,4 +1,4 @@
-<!doctype html>
+      <!doctype html>
 <html lang="de">
 <head>
   <meta charset="utf-8">
@@ -23,7 +23,19 @@
     @media(min-width:900px){ .grid{grid-template-columns:1fr 1fr} }
     .card{background:var(--card);border:1px solid #e2e8f0;border-radius:18px;padding:20px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
     .title{font-weight:800;font-size:22px;margin:4px 0 10px}
-    .price{display:inline-block;background:var(--green);color:#fff;font-weight:900;padding:12px 18px;border-radius:12px;font-size:26px;margin:6px 0 12px}
+    .price{display:inline-block;background:var(--green);color:#fff;font-weight:900;padding:12px 18px;border-radius:12px;font-size:26px;margin:6px 0 8px}
+
+    /* PayPal Käuferschutz Badge – Premium */
+    .pp-badge{
+      display:inline-flex;align-items:center;gap:8px;
+      background:linear-gradient(135deg,#0070BA,#1546A0);
+      color:#fff;font-weight:800;font-size:12px;
+      padding:8px 12px;border-radius:999px;
+      box-shadow:0 8px 16px rgba(0,0,0,.08);
+      margin:6px 0 12px 0
+    }
+    .pp-badge svg{width:16px;height:16px;opacity:.95;flex:0 0 16px}
+
     ul{list-style:none;padding:0;margin:8px 0}
     li{display:flex;gap:8px;margin:8px 0;color:#1f2937}
     .btn{display:block;text-align:center;border-radius:12px;padding:12px 16px;text-decoration:none;font-weight:800;transition:all .15s ease}
@@ -65,10 +77,20 @@
       <div class="card">
         <div class="title">Hin & Rückfahrt – 2. Klasse</div>
         <div class="price">105 €</div>
+
+        <!-- PayPal Käuferschutz Badge -->
+        <div class="pp-badge" aria-label="PayPal Käuferschutz inklusive">
+          <!-- Dezentes Schild-Icon (SVG) -->
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2l7 3v6c0 5-3.4 9.3-7 11-3.6-1.7-7-6-7-11V5l7-3zM11 16l6-6-1.4-1.4L11 13.2 8.4 10.6 7 12l4 4z"/>
+          </svg>
+          <span>PayPal Käuferschutz inklusive</span>
+        </div>
+
         <ul>
           <li>✅ Seit 2019 zuverlässig aktiv bei Kleinanzeigen</li>
           <li>✅ Sofortversand per Nachricht nach Zahlung</li>
-          <li>✅ Paypal Käuferschutz</li>
+          <li>✅ PayPal Käuferschutz</li>
         </ul>
         <a class="btn btn-buy" href="https://buy.stripe.com/dRm28sf6H2va7Tt2KjdMI02" target="_blank" rel="noopener">Jetzt kaufen</a>
         <p class="note">Preis enthält Käuferschutz-/Checkout-Gebühr.</p>
@@ -78,10 +100,19 @@
       <div class="card">
         <div class="title">Einfache Fahrt – 2. Klasse</div>
         <div class="price">74 €</div>
+
+        <!-- PayPal Käuferschutz Badge -->
+        <div class="pp-badge" aria-label="PayPal Käuferschutz inklusive">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2l7 3v6c0 5-3.4 9.3-7 11-3.6-1.7-7-6-7-11V5l7-3zM11 16l6-6-1.4-1.4L11 13.2 8.4 10.6 7 12l4 4z"/>
+          </svg>
+          <span>PayPal Käuferschutz inklusive</span>
+        </div>
+
         <ul>
           <li>✅ Seit 2019 zuverlässig aktiv bei Kleinanzeigen</li>
           <li>✅ Sofortversand per Nachricht nach Zahlung</li>
-          <li>✅ Paypal Käuferschutz</li>
+          <li>✅ PayPal Käuferschutz</li>
         </ul>
         <a class="btn btn-buy" href="https://buy.stripe.com/aFa14ogaL8Ty8Xxet1dMI03" target="_blank" rel="noopener">Jetzt kaufen</a>
         <p class="note">Preis enthält Käuferschutz-/Checkout-Gebühr.</p>
@@ -92,7 +123,6 @@
     <section style="margin-top:56px;text-align:center">
       <h2 style="font-size:26px;margin:0 0 10px;color:#0b3d2e;letter-spacing:.2px">🤝 Alternativ <strong>ohne Gebühren</strong></h2>
       <p style="max-width:760px;margin:6px auto 0;color:#334155;line-height:1.6;font-size:16px">
-        
         📱 <strong>Abwicklung ohne Gebühr über WhatsApp</strong> – schnell, persönlich, zuverlässig seit 2019.
       </p>
     </section>
@@ -120,4 +150,3 @@
   </div>
 </body>
 </html>
-
