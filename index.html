@@ -3,79 +3,62 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DB Flex Tickets – Samuel</title>
-  <meta name="description" content="DB Flex Tickets von Samuel – sicher kaufen. 105 € Hin & Rückfahrt, 74 € einfache Fahrt. PayPal Käuferschutz inklusive. Alternativ über WhatsApp (Freunde & Familie / Echtzeitüberweisung).">
-  
-  <!-- Schrift & Farben -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800;900&display=swap" rel="stylesheet">
-  
+  <title>DB-Flex Ticket</title>
+  <meta name="description" content="DB Flex Tickets von Samuel – sicher kaufen. 105 € Hin & Rückfahrt, 74 € einfache Fahrt. Zahlung über Stripe oder alternativ per WhatsApp (PayPal Freunde & Familie / Echtzeitüberweisung).">
   <style>
-    :root {
-      --bg:#e9f0de; --text:#0f172a; --muted:#475569; --card:#fff;
-      --border:#e2e8f0; --green:#0b3d2e; --accent:#111827;
-    }
+    :root{ --bg:#e9f0de; --text:#0f172a; --green:#0b3d2e; --card:#ffffff; --muted:#475569; --accent:#0b3d2e; }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);
-         font-family:'Inter',system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.45}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.45}
     .wrap{max-width:1100px;margin:auto;padding:24px}
     header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
     .brand{display:flex;gap:12px;align-items:center}
     .db{width:54px;height:54px;border:3px solid #ef4444;border-radius:10px;display:grid;place-items:center;background:#fff}
     .db span{color:#ef4444;font-weight:800;font-size:22px}
-    .seal{position:relative;width:110px;height:110px;border-radius:50%;
-      background:radial-gradient(120px 120px at 30% 30%,#e9d38c,#c79b39);
-      box-shadow:inset 0 0 0 4px #b58125,0 6px 14px rgba(0,0,0,.12)}
+    .seal{position:relative;width:110px;height:110px;border-radius:50%;background:radial-gradient(120px 120px at 30% 30%, #e9d38c, #c79b39);box-shadow:inset 0 0 0 4px #b58125,0 6px 14px rgba(0,0,0,.12)}
     .seal-inner{position:absolute;inset:0;display:grid;place-items:center;padding:12px;text-align:center}
     .seal-inner div{font-weight:700;font-size:10px}
     .stars{font-size:14px;margin:4px 0}
     h1{font-size:40px;margin:6px 0 10px}
     .grid{display:grid;gap:20px;grid-template-columns:1fr}
     @media(min-width:900px){ .grid{grid-template-columns:1fr 1fr} }
-    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
-    .title{font-weight:800;font-size:22px;margin:4px 0 10px}
-    .row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-    .price-pill{display:inline-flex;align-items:center;gap:4px;background:var(--green);color:#fff;
-      font-weight:900;padding:10px 16px;border-radius:999px;font-size:26px}
-    
-    /* PayPal Badge */
+    .card{background:var(--card);border:1px solid #e2e8f0;border-radius:18px;padding:20px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+    .title{font-weight:800;font-size:22px;margin:4px 0 14px;text-align:center}
+
+    /* === Preis & Badge — sauber mittig, untereinander === */
+    .stack{display:flex;flex-direction:column;align-items:center;gap:10px;margin:0 0 12px}
+    .price-pill{display:inline-flex;align-items:center;justify-content:center;
+      background:var(--green);color:#fff;font-weight:900;
+      padding:12px 20px;border-radius:999px;font-size:28px;line-height:1}
+
+    /* PayPal Badge im PayPal-Look */
     .pp-badge{
       display:inline-flex;align-items:center;gap:8px;
       background:linear-gradient(135deg,#009CDE,#003087);
       color:#fff;padding:8px 14px;border-radius:999px;
-      font-weight:800;font-size:12.5px;
+      font-weight:800;font-size:13px;
       box-shadow:0 3px 8px rgba(0,48,135,.25);
       text-shadow:0 1px 2px rgba(0,0,0,.15);
-      position:relative;overflow:hidden;
+      position:relative;overflow:hidden
     }
-    .pp-badge::before{
-      content:"";position:absolute;top:0;left:0;right:0;height:40%;
-      background:rgba(255,255,255,.18);
-      border-top-left-radius:999px;border-top-right-radius:999px;
-    }
-    .pp-badge svg{flex-shrink:0;width:18px;height:18px}
-    
+    .pp-badge::before{content:"";position:absolute;top:0;left:0;right:0;height:40%;
+      background:rgba(255,255,255,.18);border-top-left-radius:999px;border-top-right-radius:999px}
+    .pp-badge svg{width:18px;height:18px;flex-shrink:0}
+
     ul{list-style:none;padding:0;margin:8px 0}
     li{display:flex;gap:8px;margin:8px 0;color:#1f2937}
-    .btn{display:block;text-align:center;border-radius:12px;padding:12px 16px;text-decoration:none;
-         font-weight:800;transition:all .15s ease}
+    .btn{display:block;text-align:center;border-radius:12px;padding:12px 16px;text-decoration:none;font-weight:800;transition:all .15s ease}
     .btn:hover{opacity:.92;transform:translateY(-2px)}
     .btn-buy{background:#111827;color:#fff}
     .btn-wa{background:#25D366;color:#0f172a;position:relative;isolation:isolate}
     .note{margin-top:10px;font-size:12px;color:#64748b}
-    .altbox{margin-top:28px;background:#fff;border:1px solid #cde3d6;border-radius:20px;padding:24px;
-      display:grid;gap:18px;grid-template-columns:1fr;align-items:center;
-      box-shadow:0 12px 28px rgba(11,61,46,.08), inset 0 0 0 2px #e8f3ed}
+    .altbox{margin-top:28px;background:#fff;border:1px solid #cde3d6;border-radius:20px;padding:24px;display:grid;gap:18px;grid-template-columns:1fr;align-items:center;box-shadow:0 12px 28px rgba(11,61,46,.08), inset 0 0 0 2px #e8f3ed}
     @media(min-width:900px){.altbox{grid-template-columns:160px 1fr 240px}}
     .qr{width:160px;height:160px;border-radius:12px;background:#fff;border:1px solid #e5e7eb}
-    footer{border-top:1px solid #e2e8f0;margin-top:28px;padding-top:16px;display:flex;gap:10px;
-      justify-content:space-between;flex-wrap:wrap;color:#64748b;font-size:12px}
-    @keyframes pulse {0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+    footer{border-top:1px solid #e2e8f0;margin-top:28px;padding-top:16px;display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;color:#64748b;font-size:12px}
+    @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)} }
     .pulse::after{content:"";position:absolute;inset:0;border-radius:12px;animation:pulse 1.8s ease-out infinite;z-index:-1}
   </style>
 </head>
-
 <body>
   <div class="wrap">
     <header>
@@ -96,14 +79,17 @@
     </header>
 
     <h1>Schnell. Sicher. Sofort per Nachricht.</h1>
-
+   
     <div class="grid">
       <!-- Hin & Rückfahrt -->
       <div class="card">
         <div class="title">Hin & Rückfahrt – 2. Klasse</div>
-        <div class="row">
+
+        <!-- Preis + Badge sauber übereinander & mittig -->
+        <div class="stack">
           <div class="price-pill">105 €</div>
-          <div class="pp-badge">
+          <div class="pp-badge" aria-label="PayPal Käuferschutz inklusive">
+            <!-- dezentes Symbol (SVG) -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
               <path fill="#fff" d="M32.9,9.9h-9.3c-0.5,0-0.9,0.3-1,0.8l-4,24.9c-0.1,0.6,0.3,1.1,0.9,1.1h5.6c0.5,0,0.9-0.4,1-0.9l1-6.1
               c0.1-0.5,0.5-0.9,1-0.9h3.2c4.4,0,7.8-1.8,8.8-7c0.8-3.3,0.1-5.7-1.4-7.1C37.2,10.5,35.2,9.9,32.9,9.9z"/>
@@ -111,6 +97,7 @@
             <span>PayPal Käuferschutz inklusive</span>
           </div>
         </div>
+
         <ul>
           <li>✅ Seit 2019 zuverlässig aktiv bei Kleinanzeigen</li>
           <li>✅ Sofortversand per Nachricht nach Zahlung</li>
@@ -119,13 +106,15 @@
         <a class="btn btn-buy" href="https://buy.stripe.com/dRm28sf6H2va7Tt2KjdMI02" target="_blank" rel="noopener">Jetzt kaufen</a>
         <p class="note">Preis enthält Käuferschutz-/Checkout-Gebühr.</p>
       </div>
-
+      
       <!-- Einfache Fahrt -->
       <div class="card">
         <div class="title">Einfache Fahrt – 2. Klasse</div>
-        <div class="row">
+
+        <!-- Preis + Badge sauber übereinander & mittig -->
+        <div class="stack">
           <div class="price-pill">74 €</div>
-          <div class="pp-badge">
+          <div class="pp-badge" aria-label="PayPal Käuferschutz inklusive">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
               <path fill="#fff" d="M32.9,9.9h-9.3c-0.5,0-0.9,0.3-1,0.8l-4,24.9c-0.1,0.6,0.3,1.1,0.9,1.1h5.6c0.5,0,0.9-0.4,1-0.9l1-6.1
               c0.1-0.5,0.5-0.9,1-0.9h3.2c4.4,0,7.8-1.8,8.8-7c0.8-3.3,0.1-5.7-1.4-7.1C37.2,10.5,35.2,9.9,32.9,9.9z"/>
@@ -133,6 +122,7 @@
             <span>PayPal Käuferschutz inklusive</span>
           </div>
         </div>
+
         <ul>
           <li>✅ Seit 2019 zuverlässig aktiv bei Kleinanzeigen</li>
           <li>✅ Sofortversand per Nachricht nach Zahlung</li>
@@ -156,10 +146,7 @@
       <img class="qr" alt="WhatsApp QR" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fwa.me%2F4915155693408%3Ftext%3DHallo%2520Samuel"/>
       <div>
         <h3 style="margin:0 0 8px;font-size:20px;color:#0b3d2e">Direkt & persönlich über WhatsApp kaufen</h3>
-        <p style="margin:0 0 12px;color:#334155;line-height:1.65">
-          Schnell, sicher und unkompliziert: Zahlung per <strong>PayPal (Freunde & Familie)</strong> oder <strong>Echtzeitüberweisung</strong>. 
-          Du erhältst deinen <strong>Gutscheincode sofort nach Zahlungseingang</strong>.
-        </p>
+        <p style="margin:0 0 12px;color:#334155;line-height:1.65">Schnell, sicher und unkompliziert: Zahlung per <strong>PayPal (Freunde & Familie)</strong> oder <strong>Echtzeitüberweisung</strong>. Du erhältst deinen <strong>Gutscheincode sofort nach Zahlungseingang</strong>.</p>
         <ul style="margin:12px 0 0;padding:0;list-style:none;color:#1f2937;font-size:14px;line-height:1.6">
           <li>• Hin & Rückfahrt: <strong>100 €</strong></li>
           <li>• Einfache Fahrt: <strong>70 €</strong></li>
