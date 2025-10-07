@@ -7,12 +7,11 @@
   <meta name="description" content="DB Flex Tickets von Samuel – sicher kaufen. 105 € Hin & Rückfahrt, 74 € einfache Fahrt. PayPal Käuferschutz inklusive. Alternativ über WhatsApp (Freunde & Familie / Echtzeitüberweisung).">
   <style>
     :root{
-      --bg:#e9f0de; --text:#0f172a; --card:#ffffff; --muted:#475569; --accent:#111827;
-      --green:#0b3d2e; --border:#e2e8f0;
-      --pp1:#009CDE; --pp2:#003087; /* PayPal Verlauf */
+      --bg:#e9f0de; --text:#0f172a; --card:#fff; --muted:#475569; --accent:#111827;
+      --green:#0b3d2e; --border:#e2e8f0; --pp1:#009CDE; --pp2:#003087;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.45}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.45}
     .wrap{max-width:1100px;margin:auto;padding:24px}
 
     header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
@@ -23,43 +22,36 @@
     .seal-inner{position:absolute;inset:0;display:grid;place-items:center;padding:12px;text-align:center}
     .seal-inner div{font-weight:700;font-size:10px}
     .stars{font-size:14px;margin:4px 0}
-    h1{font-size:40px;margin:6px 0 10px}
+    h1{font-size:40px;margin:6px 0 12px}
 
     .grid{display:grid;gap:24px;grid-template-columns:1fr}
     @media(min-width:900px){ .grid{grid-template-columns:1fr 1fr} }
     .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
     .title{font-weight:800;font-size:22px;margin:0 0 16px;text-align:center}
 
-    /* Preis + Badge als Block, zentriert */
-    .stack{display:flex;flex-direction:column;align-items:center;gap:10px;margin:0 0 16px}
+    /* Preis + offizielles Badge als Block */
+    .stack{display:flex;flex-direction:column;align-items:center;gap:12px;margin:0 0 16px}
     .price-pill{
       display:inline-flex;align-items:center;justify-content:center;
       background:var(--green);color:#fff;font-weight:900;
-      font-size:40px;padding:16px 28px;border-radius:999px;
-      box-shadow:0 4px 10px rgba(0,0,0,.12);
-      line-height:1;
+      font-size:40px;padding:16px 28px;border-radius:999px;line-height:1;
+      box-shadow:0 6px 16px rgba(0,0,0,.12);
     }
 
-    /* PayPal-Badge: “Original”-Anmutung */
+    /* OFFIZIELLES PayPal-Badge: Logo-Bild + Text in einem hochwertigen Label */
     .pp-badge{
       display:inline-flex;align-items:center;gap:10px;
       background:linear-gradient(135deg,var(--pp1),var(--pp2));
       color:#fff;padding:10px 18px;border-radius:999px;
-      font-weight:800;font-size:14px;
-      box-shadow:0 4px 12px rgba(0,48,135,.22);
-      text-shadow:0 1px 2px rgba(0,0,0,.15);
-      position:relative;overflow:hidden;
+      font-weight:800;font-size:14px;position:relative;overflow:hidden;
+      box-shadow:0 6px 16px rgba(0,48,135,.22); text-shadow:0 1px 2px rgba(0,0,0,.15);
     }
     .pp-badge::before{
       content:"";position:absolute;top:0;left:0;right:0;height:44%;
-      background:rgba(255,255,255,.18); /* zarter “Glanz” oben */
-      border-top-left-radius:999px;border-top-right-radius:999px;
-      pointer-events:none;
+      background:rgba(255,255,255,.18);pointer-events:none;
     }
-    .pp-logo{width:22px;height:22px;flex:0 0 22px;display:block}
-    /* “PP”-Monogramm — zweifarbige Überlagerung, wie das echte Monogramm anmutet */
-    .pp-logo .p1{fill:#fff;opacity:.95}
-    .pp-logo .p2{fill:#fff;opacity:.8}
+    .pp-img{width:22px;height:22px;flex:0 0 22px;display:block;filter:drop-shadow(0 1px 1px rgba(0,0,0,.15))}
+    .pp-text{white-space:nowrap}
 
     ul{list-style:none;padding:0;margin:8px 0}
     li{display:flex;gap:8px;margin:8px 0;color:#1f2937}
@@ -103,19 +95,14 @@
       <!-- Hin & Rückfahrt -->
       <div class="card">
         <div class="title">Hin & Rückfahrt – 2. Klasse</div>
-
         <div class="stack">
           <div class="price-pill">105 €</div>
 
-          <!-- PayPal “original”-Badge -->
+          <!-- Offizielles PayPal-Logo im Badge -->
           <div class="pp-badge" aria-label="PayPal Käuferschutz inklusive">
-            <!-- PayPal Monogramm (zweiteiliges PP) -->
-            <svg class="pp-logo" viewBox="0 0 64 64" aria-hidden="true">
-              <!-- einfache, markenähnliche PP-Formen in Weiß (keine externe Datei nötig) -->
-              <path class="p1" d="M28 10h14c8 0 14 4 14 12s-6 12-14 12h-9l-2 12h-9l6-36z"/>
-              <path class="p2" d="M22 16h14c8 0 14 4 14 12 0 5-3 9-8 11H36l-2 9h-9l5-32z"/>
-            </svg>
-            <span>PayPal Käuferschutz inklusive</span>
+            <img class="pp-img" alt="PayPal" 
+                 src="https://www.paypalobjects.com/webstatic/icon/pp258.png">
+            <span class="pp-text">Käuferschutz inklusive</span>
           </div>
         </div>
 
@@ -131,17 +118,14 @@
       <!-- Einfache Fahrt -->
       <div class="card">
         <div class="title">Einfache Fahrt – 2. Klasse</div>
-
         <div class="stack">
           <div class="price-pill">74 €</div>
 
-          <!-- PayPal “original”-Badge -->
+          <!-- Offizielles PayPal-Logo im Badge -->
           <div class="pp-badge" aria-label="PayPal Käuferschutz inklusive">
-            <svg class="pp-logo" viewBox="0 0 64 64" aria-hidden="true">
-              <path class="p1" d="M28 10h14c8 0 14 4 14 12s-6 12-14 12h-9l-2 12h-9l6-36z"/>
-              <path class="p2" d="M22 16h14c8 0 14 4 14 12 0 5-3 9-8 11H36l-2 9h-9l5-32z"/>
-            </svg>
-            <span>PayPal Käuferschutz inklusive</span>
+            <img class="pp-img" alt="PayPal" 
+                 src="https://www.paypalobjects.com/webstatic/icon/pp258.png">
+            <span class="pp-text">Käuferschutz inklusive</span>
           </div>
         </div>
 
