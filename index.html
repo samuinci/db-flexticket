@@ -7,7 +7,7 @@
   <meta name="description" content="DB Flex Tickets von Samuel – sicher kaufen. 105 € Hin & Rückfahrt, 74 € einfache Fahrt. PayPal Käuferschutz inklusive. Alternativ über WhatsApp (Freunde & Familie / Echtzeitüberweisung).">
   <style>
     :root{
-      --bg:#e9f0de; --text:#0f172a; --card:#ffffff; --muted:#475569;
+      --bg:#e9f0de; --text:#0f172a; --card:#fff; --muted:#475569;
       --accent:#111827; --green:#0b3d2e; --border:#e2e8f0;
       --pp1:#0070BA; --pp2:#003087;
     }
@@ -20,7 +20,9 @@
     .brand{display:flex;gap:12px;align-items:center}
     .db{width:54px;height:54px;border:3px solid #ef4444;border-radius:10px;display:grid;place-items:center;background:#fff}
     .db span{color:#ef4444;font-weight:800;font-size:22px}
-    .seal{position:relative;width:110px;height:110px;border-radius:50%;background:radial-gradient(120px 120px at 30% 30%, #e9d38c, #c79b39);box-shadow:inset 0 0 0 4px #b58125,0 6px 14px rgba(0,0,0,.12)}
+    .seal{position:relative;width:110px;height:110px;border-radius:50%;
+      background:radial-gradient(120px 120px at 30% 30%, #e9d38c, #c79b39);
+      box-shadow:inset 0 0 0 4px #b58125,0 6px 14px rgba(0,0,0,.12)}
     .seal-inner{position:absolute;inset:0;display:grid;place-items:center;padding:12px;text-align:center}
     .seal-inner div{font-weight:700;font-size:10px}
     .stars{font-size:14px;margin:4px 0}
@@ -41,24 +43,58 @@
       box-shadow:0 6px 16px rgba(0,0,0,.12);
     }
 
-    /* Professionelles PayPal-Badge */
+    /* Professionelles PayPal-Badge mit 3D-Hover */
     .pp-badge{
       display:inline-flex;align-items:center;gap:10px;
       background:linear-gradient(135deg,var(--pp1),var(--pp2));
       color:#fff;padding:10px 20px;border-radius:999px;
-      font-weight:700;font-size:15px;
+      font-weight:700;font-size:15px;letter-spacing:.1px;
       box-shadow:0 6px 14px rgba(0,48,135,.25);
       text-shadow:0 1px 2px rgba(0,0,0,.15);
-      position:relative;overflow:hidden;
+      position:relative;overflow:hidden;isolation:isolate;
+      will-change:transform, box-shadow;
+      transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
     }
+    /* oberer Glanz */
     .pp-badge::before{
       content:"";position:absolute;top:0;left:0;right:0;height:45%;
-      background:rgba(255,255,255,.15);border-top-left-radius:999px;border-top-right-radius:999px;
+      background:linear-gradient(to bottom, rgba(255,255,255,.22), rgba(255,255,255,0));
+      border-top-left-radius:999px;border-top-right-radius:999px;pointer-events:none;
+      opacity:.95;
     }
-    .pp-logo{width:26px;height:26px;flex:0 0 26px;display:block}
+    /* schräger Shine-Sweep */
+    .pp-badge::after{
+      content:"";position:absolute;inset:-40%;
+      background:linear-gradient(60deg, rgba(255,255,255,0) 30%, rgba(255,255,255,.35) 50%, rgba(255,255,255,0) 70%);
+      transform:translateX(-60%) rotate(8deg);
+      mix-blend-mode:soft-light;pointer-events:none;opacity:.0;
+    }
+    .pp-logo{width:26px;height:26px;flex:0 0 26px;display:block;filter:drop-shadow(0 1px 1px rgba(0,0,0,.15))}
     .pp-logo svg{width:100%;height:100%}
     .pp-logo .p1{fill:#fff;opacity:0.9}
     .pp-logo .p2{fill:#fff;opacity:0.75}
+
+    /* Hover-Effekt (3D + Shine) */
+    .pp-badge:hover{
+      transform:translateY(-2px) scale(1.02);
+      box-shadow:0 10px 22px rgba(0,48,135,.28);
+      filter:saturate(1.05);
+    }
+    .pp-badge:hover::after{
+      animation:shine 1.4s ease-out forwards;
+      opacity:.9;
+    }
+    @keyframes shine{
+      0%{transform:translateX(-70%) rotate(8deg);opacity:.0}
+      10%{opacity:.25}
+      50%{transform:translateX(0%) rotate(8deg);opacity:.35}
+      100%{transform:translateX(70%) rotate(8deg);opacity:.0}
+    }
+    /* Bewegungs-Reduktion respektieren */
+    @media (prefers-reduced-motion: reduce){
+      .pp-badge, .pp-badge::after{transition:none;animation:none}
+      .pp-badge:hover{transform:none;box-shadow:0 6px 14px rgba(0,48,135,.25);filter:none}
+    }
 
     ul{list-style:none;padding:0;margin:8px 0}
     li{display:flex;gap:8px;margin:8px 0;color:#1f2937}
@@ -108,9 +144,10 @@
         <div class="title">Hin & Rückfahrt – 2. Klasse</div>
         <div class="stack">
           <div class="price-pill">105 €</div>
-          <div class="pp-badge">
+          <div class="pp-badge" aria-label="PayPal Käuferschutz">
             <div class="pp-logo">
-              <svg viewBox="0 0 64 64">
+              <!-- Vektorisiertes PP-Monogramm -->
+              <svg viewBox="0 0 64 64" aria-hidden="true">
                 <path class="p1" d="M28 10h14c8 0 14 4 14 12s-6 12-14 12h-9l-2 12h-9l6-36z"/>
                 <path class="p2" d="M22 16h14c8 0 14 4 14 12 0 5-3 9-8 11H36l-2 9h-9l5-32z"/>
               </svg>
@@ -118,7 +155,6 @@
             <span>PayPal Käuferschutz</span>
           </div>
         </div>
-
         <ul>
           <li>✅ Seit 2019 zuverlässig aktiv bei Kleinanzeigen</li>
           <li>✅ Sofortversand per Nachricht nach Zahlung</li>
@@ -133,9 +169,9 @@
         <div class="title">Einfache Fahrt – 2. Klasse</div>
         <div class="stack">
           <div class="price-pill">74 €</div>
-          <div class="pp-badge">
+          <div class="pp-badge" aria-label="PayPal Käuferschutz">
             <div class="pp-logo">
-              <svg viewBox="0 0 64 64">
+              <svg viewBox="0 0 64 64" aria-hidden="true">
                 <path class="p1" d="M28 10h14c8 0 14 4 14 12s-6 12-14 12h-9l-2 12h-9l6-36z"/>
                 <path class="p2" d="M22 16h14c8 0 14 4 14 12 0 5-3 9-8 11H36l-2 9h-9l5-32z"/>
               </svg>
@@ -143,7 +179,6 @@
             <span>PayPal Käuferschutz</span>
           </div>
         </div>
-
         <ul>
           <li>✅ Seit 2019 zuverlässig aktiv bei Kleinanzeigen</li>
           <li>✅ Sofortversand per Nachricht nach Zahlung</li>
@@ -172,8 +207,7 @@
         </ul>
       </div>
       <a class="btn btn-wa pulse" style="font-weight:900;border:1px solid #128C7E;padding:14px 18px;display:grid;place-items:center;height:56px;min-width:240px"
-         href="https://wa.me/4915155693408?text=Hallo%20Samuel"
-         target="_blank" rel="noopener">WhatsApp Anfrage</a>
+         href="https://wa.me/4915155693408?text=Hallo%20Samuel" target="_blank" rel="noopener">WhatsApp Anfrage</a>
     </div>
 
     <footer>
