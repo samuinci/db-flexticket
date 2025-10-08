@@ -8,7 +8,7 @@
   <style>
     :root{
       --bg:#e9f0de; --text:#0f172a; --card:#ffffff; --muted:#475569; --border:#e2e8f0;
-      --green:#0b3d2e; --pp-blue:#003087;
+      --green:#0b3d2e; --pp-blue:#003087; --gold:#c79b39;
     }
     *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--text);
@@ -54,7 +54,7 @@
     .btn:hover{opacity:.92;transform:translateY(-2px)}
     .note{margin-top:10px;font-size:12px;color:#64748b;text-align:center}
 
-    /* Alternativ-Section mit zwei Pfeilen */
+    /* Alternativ-Section mit gold-grünen Pfeilen */
     .alt-section{margin-top:40px;text-align:center;}
     .alt-section h2{
       font-size:26px;margin:0;color:#0b3d2e;letter-spacing:.2px;
@@ -62,10 +62,9 @@
     }
     .alt-section p{max-width:760px;margin:8px auto 0;color:#334155;line-height:1.6;font-size:16px}
 
-    /* SVG-Pfeile (links & rechts) */
+    /* SVG-Pfeile (links & rechts) mit Gold-Grün Verlauf */
     .arrow-icon svg{
-      width:30px;height:30px;
-      fill:var(--green);
+      width:32px;height:32px;
       filter:drop-shadow(0 2px 4px rgba(0,0,0,0.25));
       animation:arrow-bounce 2.4s infinite ease-in-out;
     }
@@ -142,18 +141,29 @@
       </div>
     </div>
 
-    <!-- Alternativ-Text-Bereich mit zwei Pfeilen -->
+    <!-- Alternativ-Bereich mit gold-grünen Pfeilen -->
     <section class="alt-section">
       <h2>
         <span class="arrow-icon">
           <svg viewBox="0 0 24 24">
-            <path d="M12 4v16m0 0l6-6m-6 6l-6-6" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <defs>
+              <linearGradient id="arrowGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#0b3d2e"/>
+                <stop offset="100%" stop-color="#c79b39"/>
+              </linearGradient>
+            </defs>
+            <path d="M12 4v16m0 0l6-6m-6 6l-6-6"
+              stroke="url(#arrowGradient)" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           </svg>
         </span>
         Alternativ <strong>ohne Gebühren</strong>
         <span class="arrow-icon">
           <svg viewBox="0 0 24 24">
-            <path d="M12 4v16m0 0l6-6m-6 6l-6-6" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <use href="#arrowGradient" />
+            <path d="M12 4v16m0 0l6-6m-6 6l-6-6"
+              stroke="url(#arrowGradient)" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           </svg>
         </span>
       </h2>
