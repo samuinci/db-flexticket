@@ -4,117 +4,75 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DB-Flex Ticket</title>
-  <meta name="description" content="DB Flex Tickets von Samuel – sicher kaufen. 105 € Hin & Rückfahrt, 74 € einfache Fahrt. PayPal Käuferschutz inklusive. Alternativ über WhatsApp (Freunde & Familie / Echtzeitüberweisung).">
+  <meta name="description" content="DB Flex Tickets von Samuel – sicher kaufen. 105 € Hin & Rückfahrt, 74 € einfache Fahrt. PayPal Käuferschutz inklusive.">
   <style>
     :root{
-      --bg:#e9f0de; --text:#0f172a; --card:#fff; --muted:#475569;
-      --accent:#111827; --green:#0b3d2e; --border:#e2e8f0;
-      --pp1:#0070BA; --pp2:#003087;
+      --bg:#e9f0de; --text:#0f172a; --card:#ffffff; --muted:#475569; --border:#e2e8f0;
+      --green:#0b3d2e; /* Preis-Hintergrund */
+      --pp-blue:#003087; /* PayPal Corporate Blau (dünner Rahmen/Text) */
     }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.45}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.45}
     .wrap{max-width:1100px;margin:auto;padding:24px}
 
     header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
     .brand{display:flex;gap:12px;align-items:center}
     .db{width:54px;height:54px;border:3px solid #ef4444;border-radius:10px;display:grid;place-items:center;background:#fff}
     .db span{color:#ef4444;font-weight:800;font-size:22px}
-    .seal{position:relative;width:110px;height:110px;border-radius:50%;
-      background:radial-gradient(120px 120px at 30% 30%, #e9d38c, #c79b39);
-      box-shadow:inset 0 0 0 4px #b58125,0 6px 14px rgba(0,0,0,.12)}
+    .seal{position:relative;width:110px;height:110px;border-radius:50%;background:radial-gradient(120px 120px at 30% 30%, #e9d38c, #c79b39);box-shadow:inset 0 0 0 4px #b58125,0 6px 14px rgba(0,0,0,.12)}
     .seal-inner{position:absolute;inset:0;display:grid;place-items:center;padding:12px;text-align:center}
     .seal-inner div{font-weight:700;font-size:10px}
     .stars{font-size:14px;margin:4px 0}
+
     h1{font-size:40px;margin:6px 0 12px;text-align:center}
 
     .grid{display:grid;gap:24px;grid-template-columns:1fr}
-    @media(min-width:900px){ .grid{grid-template-columns:1fr 1fr} }
-    .card{background:var(--card);border:1px solid var(--border);
-      border-radius:18px;padding:24px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+    @media(min-width:900px){.grid{grid-template-columns:1fr 1fr}}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
     .title{font-weight:800;font-size:22px;margin:0 0 16px;text-align:center}
 
-    /* Preisblock */
-    .stack{display:flex;flex-direction:column;align-items:center;gap:14px;margin:0 0 16px}
-    .price-pill{
-      display:inline-flex;align-items:center;justify-content:center;
+    /* === Preis rechteckig mit leicht abgerundeten Ecken + Badge darunter, mittig === */
+    .stack{display:flex;flex-direction:column;align-items:center;gap:10px;margin:0 0 16px}
+
+    .price-box{
       background:var(--green);color:#fff;font-weight:900;
-      font-size:40px;padding:16px 34px;border-radius:999px;line-height:1;
-      box-shadow:0 6px 16px rgba(0,0,0,.12);
+      font-size:42px; line-height:1;
+      padding:14px 26px;
+      border-radius:10px;              /* leicht abgerundet, nicht rund */
+      box-shadow:0 6px 16px rgba(0,0,0,.10);
+      letter-spacing:.2px;
     }
 
-    /* Professionelles PayPal-Badge mit 3D-Hover */
+    /* PayPal-Badge: weißer Hintergrund, feiner blauer Rahmen, Logo links, Text kursiv */
     .pp-badge{
       display:inline-flex;align-items:center;gap:10px;
-      background:linear-gradient(135deg,var(--pp1),var(--pp2));
-      color:#fff;padding:10px 20px;border-radius:999px;
-      font-weight:700;font-size:15px;letter-spacing:.1px;
-      box-shadow:0 6px 14px rgba(0,48,135,.25);
-      text-shadow:0 1px 2px rgba(0,0,0,.15);
-      position:relative;overflow:hidden;isolation:isolate;
-      will-change:transform, box-shadow;
-      transition:transform .18s ease, box-shadow .18s ease, filter .18s ease;
+      background:#fff;
+      border:1.5px solid var(--pp-blue);   /* feiner blauer Rahmen */
+      border-radius:12px;
+      padding:8px 12px;
+      box-shadow:0 4px 12px rgba(0,0,0,.06);
     }
-    /* oberer Glanz */
-    .pp-badge::before{
-      content:"";position:absolute;top:0;left:0;right:0;height:45%;
-      background:linear-gradient(to bottom, rgba(255,255,255,.22), rgba(255,255,255,0));
-      border-top-left-radius:999px;border-top-right-radius:999px;pointer-events:none;
-      opacity:.95;
+    .pp-badge img{
+      display:block;width:22px;height:22px;object-fit:contain;
     }
-    /* schräger Shine-Sweep */
-    .pp-badge::after{
-      content:"";position:absolute;inset:-40%;
-      background:linear-gradient(60deg, rgba(255,255,255,0) 30%, rgba(255,255,255,.35) 50%, rgba(255,255,255,0) 70%);
-      transform:translateX(-60%) rotate(8deg);
-      mix-blend-mode:soft-light;pointer-events:none;opacity:.0;
-    }
-    .pp-logo{width:26px;height:26px;flex:0 0 26px;display:block;filter:drop-shadow(0 1px 1px rgba(0,0,0,.15))}
-    .pp-logo svg{width:100%;height:100%}
-    .pp-logo .p1{fill:#fff;opacity:0.9}
-    .pp-logo .p2{fill:#fff;opacity:0.75}
-
-    /* Hover-Effekt (3D + Shine) */
-    .pp-badge:hover{
-      transform:translateY(-2px) scale(1.02);
-      box-shadow:0 10px 22px rgba(0,48,135,.28);
-      filter:saturate(1.05);
-    }
-    .pp-badge:hover::after{
-      animation:shine 1.4s ease-out forwards;
-      opacity:.9;
-    }
-    @keyframes shine{
-      0%{transform:translateX(-70%) rotate(8deg);opacity:.0}
-      10%{opacity:.25}
-      50%{transform:translateX(0%) rotate(8deg);opacity:.35}
-      100%{transform:translateX(70%) rotate(8deg);opacity:.0}
-    }
-    /* Bewegungs-Reduktion respektieren */
-    @media (prefers-reduced-motion: reduce){
-      .pp-badge, .pp-badge::after{transition:none;animation:none}
-      .pp-badge:hover{transform:none;box-shadow:0 6px 14px rgba(0,48,135,.25);filter:none}
+    .pp-badge .pp-text{
+      color:var(--pp-blue);
+      font-weight:700;
+      font-style:italic;               /* Käuferschutz kursiv */
+      white-space:nowrap;
     }
 
     ul{list-style:none;padding:0;margin:8px 0}
     li{display:flex;gap:8px;margin:8px 0;color:#1f2937}
-    .btn{display:block;text-align:center;border-radius:12px;padding:14px 16px;
-      text-decoration:none;font-weight:800;transition:all .15s ease}
+    .btn{display:block;text-align:center;border-radius:12px;padding:14px 16px;text-decoration:none;font-weight:800;background:#111827;color:#fff;transition:all .15s ease}
     .btn:hover{opacity:.92;transform:translateY(-2px)}
-    .btn-buy{background:#111827;color:#fff}
-    .btn-wa{background:#25D366;color:#0f172a;position:relative;isolation:isolate}
     .note{margin-top:10px;font-size:12px;color:#64748b;text-align:center}
 
-    .altbox{margin-top:32px;background:#fff;border:1px solid #cde3d6;border-radius:20px;
-      padding:24px;display:grid;gap:18px;grid-template-columns:1fr;align-items:center;
-      box-shadow:0 12px 28px rgba(11,61,46,.08), inset 0 0 0 2px #e8f3ed}
+    .altbox{margin-top:32px;background:#fff;border:1px solid #cde3d6;border-radius:20px;padding:24px;display:grid;gap:18px;grid-template-columns:1fr;align-items:center;box-shadow:0 12px 28px rgba(11,61,46,.08), inset 0 0 0 2px #e8f3ed}
     @media(min-width:900px){.altbox{grid-template-columns:160px 1fr 240px}}
     .qr{width:160px;height:160px;border-radius:12px;background:#fff;border:1px solid #e5e7eb}
 
-    footer{border-top:1px solid #e2e8f0;margin-top:28px;padding-top:16px;display:flex;
-      gap:10px;justify-content:space-between;flex-wrap:wrap;color:#64748b;font-size:12px}
-    @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(37,211,102,.6)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)} }
-    .pulse::after{content:"";position:absolute;inset:0;border-radius:12px;animation:pulse 1.8s ease-out infinite;z-index:-1}
+    footer{border-top:1px solid #e2e8f0;margin-top:28px;padding-top:16px;display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap;color:#64748b;font-size:12px}
   </style>
 </head>
 <body>
@@ -143,24 +101,21 @@
       <div class="card">
         <div class="title">Hin & Rückfahrt – 2. Klasse</div>
         <div class="stack">
-          <div class="price-pill">105 €</div>
+          <div class="price-box">105 €</div>
+
+          <!-- PayPal-Badge mit Original-Logo, weißer Hintergrund, blauer Rahmen, Text kursiv -->
           <div class="pp-badge" aria-label="PayPal Käuferschutz">
-            <div class="pp-logo">
-              <!-- Vektorisiertes PP-Monogramm -->
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <path class="p1" d="M28 10h14c8 0 14 4 14 12s-6 12-14 12h-9l-2 12h-9l6-36z"/>
-                <path class="p2" d="M22 16h14c8 0 14 4 14 12 0 5-3 9-8 11H36l-2 9h-9l5-32z"/>
-              </svg>
-            </div>
-            <span>PayPal Käuferschutz</span>
+            <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal">
+            <span class="pp-text">Käuferschutz</span>
           </div>
         </div>
+
         <ul>
           <li>✅ Seit 2019 zuverlässig aktiv bei Kleinanzeigen</li>
           <li>✅ Sofortversand per Nachricht nach Zahlung</li>
           <li>✅ PayPal Käuferschutz</li>
         </ul>
-        <a class="btn btn-buy" href="https://buy.stripe.com/dRm28sf6H2va7Tt2KjdMI02" target="_blank" rel="noopener">Jetzt kaufen</a>
+        <a class="btn" href="https://buy.stripe.com/dRm28sf6H2va7Tt2KjdMI02" target="_blank" rel="noopener">Jetzt kaufen</a>
         <p class="note">Preis enthält Käuferschutz-/Checkout-Gebühr.</p>
       </div>
 
@@ -168,46 +123,40 @@
       <div class="card">
         <div class="title">Einfache Fahrt – 2. Klasse</div>
         <div class="stack">
-          <div class="price-pill">74 €</div>
+          <div class="price-box">74 €</div>
+
           <div class="pp-badge" aria-label="PayPal Käuferschutz">
-            <div class="pp-logo">
-              <svg viewBox="0 0 64 64" aria-hidden="true">
-                <path class="p1" d="M28 10h14c8 0 14 4 14 12s-6 12-14 12h-9l-2 12h-9l6-36z"/>
-                <path class="p2" d="M22 16h14c8 0 14 4 14 12 0 5-3 9-8 11H36l-2 9h-9l5-32z"/>
-              </svg>
-            </div>
-            <span>PayPal Käuferschutz</span>
+            <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal">
+            <span class="pp-text">Käuferschutz</span>
           </div>
         </div>
+
         <ul>
           <li>✅ Seit 2019 zuverlässig aktiv bei Kleinanzeigen</li>
           <li>✅ Sofortversand per Nachricht nach Zahlung</li>
           <li>✅ PayPal Käuferschutz</li>
         </ul>
-        <a class="btn btn-buy" href="https://buy.stripe.com/aFa14ogaL8Ty8Xxet1dMI03" target="_blank" rel="noopener">Jetzt kaufen</a>
+        <a class="btn" href="https://buy.stripe.com/aFa14ogaL8Ty8Xxet1dMI03" target="_blank" rel="noopener">Jetzt kaufen</a>
         <p class="note">Preis enthält Käuferschutz-/Checkout-Gebühr.</p>
       </div>
     </div>
 
-    <section style="margin-top:56px;text-align:center">
-      <h2 style="font-size:26px;margin:0 0 10px;color:#0b3d2e;letter-spacing:.2px">🤝 Alternativ <strong>ohne Gebühren</strong></h2>
-      <p style="max-width:760px;margin:6px auto 0;color:#334155;line-height:1.6;font-size:16px">
-        📱 <strong>Abwicklung ohne Gebühr über WhatsApp</strong> – schnell, persönlich, zuverlässig seit 2019.
-      </p>
-    </section>
-
-    <div class="altbox">
-      <img class="qr" alt="WhatsApp QR" src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fwa.me%2F4915155693408%3Ftext%3DHallo%2520Samuel"/>
+    <!-- Optional: Alternativ-Box (unverändert) -->
+    <div class="altbox" style="margin-top:40px">
+      <img class="qr" alt="WhatsApp QR"
+           src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fwa.me%2F4915155693408%3Ftext%3DHallo%2520Samuel"/>
       <div>
         <h3 style="margin:0 0 8px;font-size:20px;color:#0b3d2e">Direkt & persönlich über WhatsApp kaufen</h3>
-        <p style="margin:0 0 12px;color:#334155;line-height:1.65">Zahlung per <strong>PayPal (Freunde & Familie)</strong> oder <strong>Echtzeitüberweisung</strong>. Du erhältst deinen <strong>Gutscheincode sofort nach Zahlungseingang</strong>.</p>
+        <p style="margin:0 0 12px;color:#334155;line-height:1.65">
+          Zahlung per <strong>PayPal (Freunde & Familie)</strong> oder <strong>Echtzeitüberweisung</strong>.
+          Du erhältst deinen <strong>Gutscheincode sofort nach Zahlungseingang</strong>.
+        </p>
         <ul style="margin:12px 0 0;padding:0;list-style:none;color:#1f2937;font-size:14px;line-height:1.6">
           <li>• Hin & Rückfahrt: <strong>100 €</strong></li>
           <li>• Einfache Fahrt: <strong>70 €</strong></li>
         </ul>
       </div>
-      <a class="btn btn-wa pulse" style="font-weight:900;border:1px solid #128C7E;padding:14px 18px;display:grid;place-items:center;height:56px;min-width:240px"
-         href="https://wa.me/4915155693408?text=Hallo%20Samuel" target="_blank" rel="noopener">WhatsApp Anfrage</a>
+      <a class="btn" style="background:#25D366;color:#0f172a;border:1px solid #128C7E" href="https://wa.me/4915155693408?text=Hallo%20Samuel" target="_blank" rel="noopener">WhatsApp Anfrage</a>
     </div>
 
     <footer>
