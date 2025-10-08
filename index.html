@@ -56,10 +56,28 @@
     .btn:hover{opacity:.92;transform:translateY(-2px)}
     .note{margin-top:10px;font-size:12px;color:#64748b;text-align:center}
 
-    /* Alternativ-Section (wieder eingefügt) */
-    .alt-section{margin-top:40px;text-align:center}
-    .alt-section h2{font-size:26px;margin:0 0 10px;color:#0b3d2e;letter-spacing:.2px}
-    .alt-section p{max-width:760px;margin:6px auto 0;color:#334155;line-height:1.6;font-size:16px}
+    /* Alternativ-Section */
+    .alt-section{margin-top:40px;text-align:center;position:relative;}
+    .alt-section h2{
+      font-size:26px;margin:0;color:#0b3d2e;letter-spacing:.2px;
+      display:inline-flex;align-items:center;gap:10px;
+    }
+    .alt-section p{max-width:760px;margin:8px auto 0;color:#334155;line-height:1.6;font-size:16px}
+
+    /* Pfeil nach unten */
+    .arrow-down{
+      display:inline-block;
+      width:0;height:0;
+      border-left:8px solid transparent;
+      border-right:8px solid transparent;
+      border-top:10px solid var(--green);
+      margin-left:6px;
+      animation:bounce 2s infinite ease-in-out;
+    }
+    @keyframes bounce{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(4px)}
+    }
 
     .altbox{margin-top:28px;background:#fff;border:1px solid #cde3d6;border-radius:20px;padding:24px;display:grid;gap:18px;grid-template-columns:1fr;align-items:center;box-shadow:0 12px 28px rgba(11,61,46,.08), inset 0 0 0 2px #e8f3ed}
     @media(min-width:900px){.altbox{grid-template-columns:160px 1fr 240px}}
@@ -129,9 +147,9 @@
       </div>
     </div>
 
-    <!-- >>> Wieder eingefügter Alternativ-Text-Bereich <<< -->
+    <!-- Alternativ-Text-Bereich mit Pfeil -->
     <section class="alt-section">
-      <h2>🤝 Alternativ <strong>ohne Gebühren</strong></h2>
+      <h2>🤝 Alternativ <strong>ohne Gebühren</strong><span class="arrow-down"></span></h2>
       <p>📱 <strong>Abwicklung ohne Gebühr über WhatsApp</strong> – schnell, persönlich, zuverlässig seit 2019.</p>
     </section>
 
