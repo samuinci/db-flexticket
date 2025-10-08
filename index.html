@@ -54,15 +54,15 @@
     .btn:hover{opacity:.92;transform:translateY(-2px)}
     .note{margin-top:10px;font-size:12px;color:#64748b;text-align:center}
 
-    /* Alternativ-Section mit edlem Pfeil */
+    /* Alternativ-Section mit zwei Pfeilen */
     .alt-section{margin-top:40px;text-align:center;}
     .alt-section h2{
       font-size:26px;margin:0;color:#0b3d2e;letter-spacing:.2px;
-      display:inline-flex;align-items:center;gap:10px;
+      display:inline-flex;align-items:center;gap:14px;
     }
     .alt-section p{max-width:760px;margin:8px auto 0;color:#334155;line-height:1.6;font-size:16px}
 
-    /* SVG-Pfeil mit Animation */
+    /* SVG-Pfeile (links & rechts) */
     .arrow-icon svg{
       width:30px;height:30px;
       fill:var(--green);
@@ -142,10 +142,15 @@
       </div>
     </div>
 
-    <!-- Alternativ-Text-Bereich mit SVG-Pfeil -->
+    <!-- Alternativ-Text-Bereich mit zwei Pfeilen -->
     <section class="alt-section">
       <h2>
-        🤝 Alternativ <strong>ohne Gebühren</strong>
+        <span class="arrow-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 4v16m0 0l6-6m-6 6l-6-6" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </span>
+        Alternativ <strong>ohne Gebühren</strong>
         <span class="arrow-icon">
           <svg viewBox="0 0 24 24">
             <path d="M12 4v16m0 0l6-6m-6 6l-6-6" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
