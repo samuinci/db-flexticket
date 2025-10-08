@@ -8,11 +8,12 @@
   <style>
     :root{
       --bg:#e9f0de; --text:#0f172a; --card:#ffffff; --muted:#475569; --border:#e2e8f0;
-      --green:#0b3d2e; /* Preis-Hintergrund */
-      --pp-blue:#003087; /* PayPal Corporate Blau (dünner Rahmen/Text) */
+      --green:#0b3d2e;        /* Preis-Hintergrund */
+      --pp-blue:#003087;      /* PayPal Corporate Blau (Rahmen/Text) */
     }
     *{box-sizing:border-box}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.45}
+    body{margin:0;background:var(--bg);color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.45}
     .wrap{max-width:1100px;margin:auto;padding:24px}
 
     header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
@@ -31,36 +32,23 @@
     .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:24px;box-shadow:0 6px 18px rgba(0,0,0,.06)}
     .title{font-weight:800;font-size:22px;margin:0 0 16px;text-align:center}
 
-    /* === Preis rechteckig mit leicht abgerundeten Ecken + Badge darunter, mittig === */
+    /* Preis + Badge (mittig, untereinander) */
     .stack{display:flex;flex-direction:column;align-items:center;gap:10px;margin:0 0 16px}
-
     .price-box{
       background:var(--green);color:#fff;font-weight:900;
-      font-size:42px; line-height:1;
-      padding:14px 26px;
-      border-radius:10px;              /* leicht abgerundet, nicht rund */
+      font-size:42px;line-height:1;padding:14px 26px;
+      border-radius:10px; /* leicht abgerundet */
       box-shadow:0 6px 16px rgba(0,0,0,.10);
       letter-spacing:.2px;
     }
-
-    /* PayPal-Badge: weißer Hintergrund, feiner blauer Rahmen, Logo links, Text kursiv */
+    /* PayPal-Badge: weiß, feiner blauer Rahmen, Original-Logo + kursiver Text */
     .pp-badge{
-      display:inline-flex;align-items:center;gap:10px;
-      background:#fff;
-      border:1.5px solid var(--pp-blue);   /* feiner blauer Rahmen */
-      border-radius:12px;
-      padding:8px 12px;
-      box-shadow:0 4px 12px rgba(0,0,0,.06);
+      display:inline-flex;align-items:center;gap:10px;background:#fff;
+      border:1.5px solid var(--pp-blue);border-radius:12px;
+      padding:8px 12px;box-shadow:0 4px 12px rgba(0,0,0,.06)
     }
-    .pp-badge img{
-      display:block;width:22px;height:22px;object-fit:contain;
-    }
-    .pp-badge .pp-text{
-      color:var(--pp-blue);
-      font-weight:700;
-      font-style:italic;               /* Käuferschutz kursiv */
-      white-space:nowrap;
-    }
+    .pp-badge img{display:block;width:22px;height:22px;object-fit:contain}
+    .pp-badge .pp-text{color:var(--pp-blue);font-weight:700;font-style:italic;white-space:nowrap}
 
     ul{list-style:none;padding:0;margin:8px 0}
     li{display:flex;gap:8px;margin:8px 0;color:#1f2937}
@@ -68,7 +56,12 @@
     .btn:hover{opacity:.92;transform:translateY(-2px)}
     .note{margin-top:10px;font-size:12px;color:#64748b;text-align:center}
 
-    .altbox{margin-top:32px;background:#fff;border:1px solid #cde3d6;border-radius:20px;padding:24px;display:grid;gap:18px;grid-template-columns:1fr;align-items:center;box-shadow:0 12px 28px rgba(11,61,46,.08), inset 0 0 0 2px #e8f3ed}
+    /* Alternativ-Section (wieder eingefügt) */
+    .alt-section{margin-top:40px;text-align:center}
+    .alt-section h2{font-size:26px;margin:0 0 10px;color:#0b3d2e;letter-spacing:.2px}
+    .alt-section p{max-width:760px;margin:6px auto 0;color:#334155;line-height:1.6;font-size:16px}
+
+    .altbox{margin-top:28px;background:#fff;border:1px solid #cde3d6;border-radius:20px;padding:24px;display:grid;gap:18px;grid-template-columns:1fr;align-items:center;box-shadow:0 12px 28px rgba(11,61,46,.08), inset 0 0 0 2px #e8f3ed}
     @media(min-width:900px){.altbox{grid-template-columns:160px 1fr 240px}}
     .qr{width:160px;height:160px;border-radius:12px;background:#fff;border:1px solid #e5e7eb}
 
@@ -102,14 +95,11 @@
         <div class="title">Hin & Rückfahrt – 2. Klasse</div>
         <div class="stack">
           <div class="price-box">105 €</div>
-
-          <!-- PayPal-Badge mit Original-Logo, weißer Hintergrund, blauer Rahmen, Text kursiv -->
           <div class="pp-badge" aria-label="PayPal Käuferschutz">
             <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal">
             <span class="pp-text">Käuferschutz</span>
           </div>
         </div>
-
         <ul>
           <li>✅ Seit 2019 zuverlässig aktiv bei Kleinanzeigen</li>
           <li>✅ Sofortversand per Nachricht nach Zahlung</li>
@@ -124,13 +114,11 @@
         <div class="title">Einfache Fahrt – 2. Klasse</div>
         <div class="stack">
           <div class="price-box">74 €</div>
-
           <div class="pp-badge" aria-label="PayPal Käuferschutz">
             <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal">
             <span class="pp-text">Käuferschutz</span>
           </div>
         </div>
-
         <ul>
           <li>✅ Seit 2019 zuverlässig aktiv bei Kleinanzeigen</li>
           <li>✅ Sofortversand per Nachricht nach Zahlung</li>
@@ -141,8 +129,14 @@
       </div>
     </div>
 
-    <!-- Optional: Alternativ-Box (unverändert) -->
-    <div class="altbox" style="margin-top:40px">
+    <!-- >>> Wieder eingefügter Alternativ-Text-Bereich <<< -->
+    <section class="alt-section">
+      <h2>🤝 Alternativ <strong>ohne Gebühren</strong></h2>
+      <p>📱 <strong>Abwicklung ohne Gebühr über WhatsApp</strong> – schnell, persönlich, zuverlässig seit 2019.</p>
+    </section>
+
+    <!-- WhatsApp Box -->
+    <div class="altbox">
       <img class="qr" alt="WhatsApp QR"
            src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fwa.me%2F4915155693408%3Ftext%3DHallo%2520Samuel"/>
       <div>
@@ -156,7 +150,8 @@
           <li>• Einfache Fahrt: <strong>70 €</strong></li>
         </ul>
       </div>
-      <a class="btn" style="background:#25D366;color:#0f172a;border:1px solid #128C7E" href="https://wa.me/4915155693408?text=Hallo%20Samuel" target="_blank" rel="noopener">WhatsApp Anfrage</a>
+      <a class="btn" style="background:#25D366;color:#0f172a;border:1px solid #128C7E"
+         href="https://wa.me/4915155693408?text=Hallo%20Samuel" target="_blank" rel="noopener">WhatsApp Anfrage</a>
     </div>
 
     <footer>
